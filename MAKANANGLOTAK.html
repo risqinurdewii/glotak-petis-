@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glotak</title>
+  <style>
+    body { 
+      margin: 0;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #f8faff;
+      color: #333;
+      transition: background 0.5s;
+    }
+
+    h1, h2, h3 { color: #1a237e; font-weight: 600; }
+    p, li { line-height: 1.6; }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: linear-gradient(135deg, #304ffe, #3d5afe);
+      color: white;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: transparent;
+      margin-top: -20px;
+      z-index: 10;
+      position: relative;
+    }
+
+    nav a {
+      padding: 10px 18px;
+      background: white;
+      color: #1a237e;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 500;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+    }
+
+    nav a:hover {
+      background: #1a237e;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 40px 20px 60px;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+    }
+
+    .content {
+      background: white;
+      padding: 35px;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      position: relative;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      border-radius: 12px;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .gallery img {
+      border-radius: 10px;
+      width: 100%;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 9999;
+    }
+
+    .popup.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .popup img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(255,255,255,0.3);
+      animation: fadeIn 0.4s ease;
+    }
+
+    .popup span {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2em;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .popup span:hover {
+      color: #ff5252;
+      transform: scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.8em; }
+      nav a { font-size: 0.9em; padding: 8px 14px; }
+      section { padding: 25px 15px; }
+      .content { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Glotak</h1>
+    <p>Gurih • Enak • Lezat</p>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a onclick="showPage('home')">Home</a>
+    <a onclick="showPage('tentang')">Tentang</a>
+    <a onclick="showPage('resep')">Resep</a>
+    <a onclick="showPage('sejarah')">Sejarah</a>
+    <a onclick="showPage('kelompok')">Kelompok</a>
+    <a onclick="showPage('lokasi')">Lokasi</a>
+  </nav>
+
+  <!-- SECTION -->
+  <section>
+    <div id="home" class="content active">
+      <h2>Selamat Datang</h2>
+      <img src="4.jpg" alt="Glotak">
+    </div>
+
+    <div id="tentang" class="content">
+      <h2>Tentang Glotak</h2>
+      <p>Glotak adalah salah satu makanan tradisional khas Tegal, Jawa Tengah, yang memiliki cita rasa gurih, pedas, dan khas. Hidangan ini dibuat dari nangka muda (gori) yang dimasak dengan petis udang atau petis ikan, kemudian diberi tambahan berbagai bumbu rempah-rempah seperti bawang merah, bawang putih, cabai, daun jeruk, serta sedikit gula dan garam untuk menyeimbangkan rasa.</p>
+
+<p>Nama “glotak” muncul dari bunyi khas “glotak-glotak” yang terdengar saat masakan ini diaduk di wajan ketika sedang dimasak. Suara itu berasal dari tekstur masakan yang kental dan berminyak akibat campuran petis dan santan. Dari bunyi inilah akhirnya masakan ini dikenal dengan nama glotak.
+</p>
+<p>Secara tampilan, glotak berwarna hitam kecokelatan karena penggunaan petis sebagai bahan utama. Meski terlihat sederhana, cita rasanya sangat kaya — ada rasa gurih dari petis, pedas dari cabai, serta aroma harum dari daun jeruk dan bumbu tumisannya. Biasanya glotak disajikan bersama nasi hangat, kadang juga dipadukan dengan tempe goreng, tahu, atau lauk lainnya.
+</p>
+<p>Selain rasanya yang unik, glotak juga memiliki nilai budaya yang tinggi. Makanan ini mencerminkan kreativitas masyarakat Tegal dalam mengolah bahan-bahan lokal menjadi hidangan lezat dan bernilai gizi. Dahulu, glotak sering disajikan dalam acara keluarga, hajatan, atau sebagai jamuan bagi tamu. Kini, glotak menjadi ikon kuliner khas Tegal yang banyak dicari wisatawan.</p>
+
+<p>Jadi, secara lengkap dapat disimpulkan bahwa:
+
+> Glotak adalah masakan tradisional khas Tegal berbahan dasar nangka muda yang dimasak dengan petis dan rempah-rempah, menghasilkan rasa gurih pedas yang khas serta melambangkan kekayaan cita rasa dan budaya kuliner masyarakat Tegal.</p>
+</div>
+     
+    
+
+    <div id="resep" class="content">
+      <h2>Resep Glotak</h2>
+      Bahan Utama:</h3>
+    <ul>
+      <li>250 gr tempe gembus (ampas kedelai), potong kecil-kecil</li>
+      <li>3 lembar daun jeruk</li>
+      <li>1 batang serai, memarkan</li>
+      <li>1 ruas lengkuas, memarkan</li>
+      <li>2 sdm minyak goreng</li>
+      <li>200 ml air</li>
+    </ul>
+
+    <h3>Bumbu Halus:</h3>
+    <ul>
+      <li>5 siung bawang merah</li>
+      <li>3 siung bawang putih</li>
+      <li>5 buah cabai merah</li>
+      <li>3 buah cabai rawit</li>
+      <li>2 butir kemiri sangrai</li>
+      <li>½ sdt ketumbar sangrai</li>
+      <li>Garam, gula merah, penyedap secukupnya</li>
+    </ul>
+
+    <h3>Langkah-langkah:</h3>
+    <ol>
+      <li>Cuci bersih tempe gembus, potong kecil atau suwir kasar.</li>
+      <li>Haluskan bumbu, lalu tumis hingga harum.</li>
+      <li>Masukkan daun jeruk, serai, dan lengkuas.</li>
+      <li>Tambahkan tempe gembus, aduk rata.</li>
+      <li>Tuang air, masak hingga mendidih dan bumbu meresap.</li>
+      <li>Bumbui dengan garam, gula merah, dan penyedap.</li>
+      <li>Angkat dan sajikan hangat dengan nasi putih.</li>
+    </div>
+
+    <div id="sejarah" class="content">
+      <h2>Sejarah Glotak</h2>
+      <p>Asal-Usul Glotak
+
+Glotak berasal dari Kota Tegal, Jawa Tengah — sebuah daerah pesisir utara Pulau Jawa yang terkenal dengan kekayaan kuliner tradisionalnya seperti sate tegal, kupat glabed, dan tahu aci. Makanan ini muncul dari kebiasaan masyarakat pesisir yang gemar mengolah hasil laut, terutama udang dan ikan, menjadi bahan makanan yang tahan lama, salah satunya berupa petis.
+
+Petis sendiri merupakan hasil sampingan dari proses pembuatan saus atau kaldu udang dan ikan yang dimasak hingga kental. Karena masyarakat Tegal tidak suka menyia-nyiakan bahan makanan, petis yang tersisa kemudian diolah kembali dengan bahan lain agar bisa dijadikan lauk. Dari sinilah ide membuat masakan “glotak” lahir, yakni dengan mencampurkan petis bersama nangka muda (gori) dan rempah-rempah.
+</p>
+<p>Asal Nama “Glotak”
+
+Nama glotak memiliki cerita unik. Kata tersebut berasal dari bunyi “glotak-glotak” yang muncul saat masakan ini diaduk di wajan. Karena petis yang digunakan kental dan berminyak, ketika dimasak akan menimbulkan suara khas seperti “glotak… glotak…”.
+Suara inilah yang kemudian diabadikan menjadi nama masakan tersebut. Jadi, “glotak” bukan berasal dari bahan dasarnya, melainkan dari suara khas selama proses memasak yang menjadi ciri khasnya.</p>
+<p>Makna dan Filosofi Glotak
+
+Bagi masyarakat Tegal, glotak bukan sekadar makanan, melainkan warisan budaya kuliner yang menandakan kesederhanaan dan kebersamaan.
+
+Petis melambangkan kekuatan dan ketekunan masyarakat pesisir.
+
+Nangka muda melambangkan kesuburan dan hasil bumi.
+
+Rasa pedas gurihnya menggambarkan semangat hidup dan kegigihan masyarakat Tegal.
+
+Secara historis dan budaya, Glotak adalah masakan tradisional khas Tegal yang lahir dari kreativitas masyarakat pesisir dalam memanfaatkan petis dan nangka muda sebagai bahan sederhana namun bernilai tinggi.
+Makanan ini mencerminkan perpaduan budaya, rasa kebersamaan, dan semangat hidup masyarakat Tegal yang sederhana namun penuh makna.</p>
+    </div>
+
+    <div id="kelompok" class="content">
+      <h2>Kelompok Pembuat</h2>
+      <ul>
+        <li><b>Nama Kelompok:</b> Peneliti Makanan Glotak (petis)</li>
+        <li><b>Asal Sekolah:</b> SMA N 3 Slawi</li>
+        <li><b>Anggota:</b>
+          <ul>
+            <li>Amelia Ulil R.D.K (04)</li>
+            <li>Deca Mariyana (13)</li>
+            <li>Risqi Nur Dewi Indah (31)</li>
+            <li>Salsabilla Dias M.Z (34)</li>
+          </ul>
+        </li>
+        <li><b>Pembimbing:</b> Lutfatul Kholifah, S.T.</li>
+      </ul>
+       <img src="1.jpg" alt="Fotbar Penjual Glotak"
+      <!-- 🔽 Bagian Data Diri Anggota -->
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:25px; margin-top:30px;">
+      
+      <div style="background:white; display:flex; align-items:center; gap:20px; padding:15px 20px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); width:320px;">
+        <img src="8.jpg" alt="Foto Amelia" style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid #b3541e;">
+        <div>
+          <h3 style="margin:0; color:#b3541e;">Amelia Ulil R.D.K</h3>
+          <p style="margin:3px 0;">TTL: Tegal, 06 Agustus 2008</p>
+          <p style="margin:3px 0;">Hobi: Membaca</p>
+        </div>
+      </div>
+
+      <div style="background:white; display:flex; align-items:center; gap:20px; padding:15px 20px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); width:320px;">
+        <img src="7.jpg" alt="Foto deca" style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid #b3541e;">
+        <div>
+          <h3 style="margin:0; color:#b3541e;">Deca Mariyana</h3>
+          <p style="margin:3px 0;">TTL: Tegal, 27 Maret 2008</p>
+          <p style="margin:3px 0;">Hobi: nonton drakor, membaca</p>
+        </div>
+      </div>
+
+      <div style="background:white; display:flex; align-items:center; gap:20px; padding:15px 20px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); width:320px;">
+        <img src="5.jpg" alt="Foto dewii" style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid #b3541e;">
+        <div>
+          <h3 style="margin:0; color:#b3541e;">Risqi Nur Dewi Indah</h3>
+          <p style="margin:3px 0;">TTL: Tegal, 21 Agustus 2008</p>
+          <p style="margin:3px 0;">Hobi: Mendengarkan Musik</p>
+        </div>
+      </div>
+
+      <div style="background:white; display:flex; align-items:center; gap:20px; padding:15px 20px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); width:320px;">
+        <img src="6.jpg" alt="Foto dias" style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid #b3541e;">
+        <div>
+          <h3 style="margin:0; color:#b3541e;">Salsabilla Dias M.Z</h3>
+          <p style="margin:3px 0;">TTL: Tegal, 22 Oktober 2007</p>
+          <p style="margin:3px 0;">Hobi: Menonton Film</p>
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+    <div id="lokasi" class="content">
+      <h2>Lokasi Penjualan Glotak</h2>
+      <p>Temukan lokasi penelitian dan pembuatan glotak kami di peta berikut:</p>
+      <p><strong>Alamat:</strong><br>
+    Jl. Imam Bonjol, Gg 9, RT 4/2, Kelurahan Kudaile, Slawi, Kabupaten Tegal</p>
+    <iframe 
+      src="https://www.google.com/maps?q=-6.980558,109.140438&hl=id&z=17&output=embed" 
+      width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+           📍 Buka di Google Maps
+        </a>
+      </p>
+      <img src="3.jpg" alt="Lokasi Penjualan Glotak"
+    </div>
+  </section>
+
+  <div class="popup" id="popup">
+    <span onclick="closePopup()">&times;</span>
+    <img id="popupImg" src="">
+  </div>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+    }
+
+    function openPopup(src) {
+      document.getElementById('popup').classList.add('active');
+      document.getElementById('popupImg').src = src;
+    }
+
+    function closePopup() {
+      document.getElementById('popup').classList.remove('active');
+    }
+
+    document.getElementById('popup').addEventListener('click', function(e) {
+      if (e.target === this) closePopup();
+    });
+  </script>
+
+</body>
+</html>
